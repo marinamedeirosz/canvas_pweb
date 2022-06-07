@@ -1,8 +1,8 @@
-var canvas = document.getElementById("meu_canvas");
-var context = canvas.getContext('2d');
+var canvas1 = document.getElementById("quadrados");
+var context = canvas1.getContext('2d');
 
 context.fillStyle = "lightblue";
-context.fillRect(0,0,meu_canvas.height, meu_canvas.width);
+context.fillRect(0,0,quadrados.height, quadrados.width);
 context.fillStyle = "red";
 context.fillRect(100,100,100,100);
 context.lineWidth = 3;
@@ -27,71 +27,111 @@ context.lineTo(250,120);
 context.lineTo(75,250);
 context.stroke();
 
-context.beginPath();
-context.arc(
-    500, 
-    250, 
+var canvas2 = document.getElementById("circulos");
+var context2 = canvas2.getContext('2d');
+context2.fillStyle = "lightblue";
+context2.fillRect(0,0,circulos.height, circulos.width);
+context2.lineWidth = 5;
+context2.strokeStyle = "green";
+
+context2.beginPath();
+context2.arc(
+    100, 
+    100, 
     50, 
     90*Math.PI/180,
     270*Math.PI/180,
     false);
-context.stroke();
+context2.stroke();
+context2.beginPath();
+context2.arc(
+    150, 
+    100, 
+    50, 
+    90*Math.PI/180,
+    270*Math.PI/180,
+    true);
+context2.stroke();
 
-context.beginPath();
-context.arc(
-    500, 
-    500, 
+context2.beginPath();
+context2.arc(
+    200, 
+    230, 
     50, 
     0, 
     2*Math.PI, 
     false);
-context.stroke();
+context2.stroke();
+
+var canvas3 = document.getElementById("imagens");
+var context3 = canvas3.getContext('2d');
+context3.fillStyle = "lightblue";
+context3.fillRect(0,0,imagens.height, imagens.width);
 
 var imagem = new Image();
 imagem.src = "img/final.jpg"
 imagem.onload = function(){
     var x = 10;
     for (var i = 1; i <=5; i++){
-        context.drawImage(imagem, x, 300, 60, 60);
-        x += 70;
+        context3.drawImage(imagem, x, 50, 40, 40);
+        x += 50;
     }
 }
 
 var imagem2 = new Image();
 imagem2.src='img/explosao.png';
 imagem2.onload = function() {
-    context.drawImage(
+    context3.drawImage(
         imagem2,
         80,10,60,65,
-        20,500,60,65
+        20,100,60,65
     );
 }
 
-context.beginPath();
-context.fillStyle = "pink";
-context.fillRect(350, 10, 50, 50);
-context.save();
-context.fillStyle = "purple";
-context.fillRect(350, 10, 50, 50);
-context.restore();
-context.fillRect(350, 10, 50, 50);
+context3.beginPath();
+context3.fillStyle = "pink";
+context3.fillRect(140, 140, 50, 50);
+context3.save();
+context3.fillStyle = "purple";
+context3.fillRect(150, 150, 50, 50);
+context3.restore();
+context3.fillRect(160, 160, 50, 50);
 
-context.beginPath();
-var x = 150;
-var y = 500;
-var raio = 20;
-requestAnimationFrame(mexerBola);
+var canvas4 = document.getElementById("animacao");
+var context4 = canvas4.getContext('2d');
+context4.fillStyle = "lightblue";
+context4.fillRect(0,0,animacao.height, animacao.width);
+context4.fillStyle = "pink";
 
-function mexerBola(){
-    //context.clearRect(0,0,meu_canvas.width,meu_canvas.height);
-    context.beginPath();
-    context.arc(x,y,raio,0,Math.PI*2);
-    context.fill();
-    x+=50;
-}
+var x = 20;
+var y = 150;
+var raio = 15;
+var anterior = new Date().getTime();
 
 requestAnimationFrame(mexerBola);
 
+function mexerBola() {
+    var agora = new Date().getTime();
+    
+    var decorrido = agora - anterior;      
+
+    context4.clearRect(0, 0, animacao.width, animacao.height);
+    context4.fillStyle = "lightblue";
+    context4.fillRect(0,0,animacao.height, animacao.width);
+    context4.fillStyle = "red";
+    
+    context4.beginPath();
+    context4.arc(x, y, raio, 0, Math.PI*2);
+    context4.fill();
+
+    var velocidade = 20;
+    x += velocidade * decorrido / 1000;
+    
+    anterior = agora;
+
+    requestAnimationFrame(mexerBola);
+}      
+   
 function Carro(cor, velMax) {
     this.cor = cor;
     this.velMax = velMax;
