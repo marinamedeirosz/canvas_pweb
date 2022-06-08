@@ -2,7 +2,7 @@ var canvas1 = document.getElementById("quadrados");
 var context = canvas1.getContext('2d');
 
 context.fillStyle = "lightblue";
-context.fillRect(0,0,quadrados.height, quadrados.width);
+context.fillRect(0,0,canvas1.height, canvas1.width);
 context.fillStyle = "red";
 context.fillRect(100,100,100,100);
 context.lineWidth = 3;
@@ -30,7 +30,7 @@ context.stroke();
 var canvas2 = document.getElementById("circulos");
 var context2 = canvas2.getContext('2d');
 context2.fillStyle = "lightblue";
-context2.fillRect(0,0,circulos.height, circulos.width);
+context2.fillRect(0,0,canvas2.height, canvas2.width);
 context2.lineWidth = 5;
 context2.strokeStyle = "green";
 
@@ -66,7 +66,7 @@ context2.stroke();
 var canvas3 = document.getElementById("imagens");
 var context3 = canvas3.getContext('2d');
 context3.fillStyle = "lightblue";
-context3.fillRect(0,0,imagens.height, imagens.width);
+context3.fillRect(0,0,canvas3.height, canvas3.width);
 
 var imagem = new Image();
 imagem.src = "img/final.jpg"
@@ -100,7 +100,7 @@ context3.fillRect(160, 160, 50, 50);
 var canvas4 = document.getElementById("animacao");
 var context4 = canvas4.getContext('2d');
 context4.fillStyle = "lightblue";
-context4.fillRect(0,0,animacao.height, animacao.width);
+context4.fillRect(0,0,canvas4.height, canvas4.width);
 context4.fillStyle = "pink";
 
 var x = 20;
@@ -115,9 +115,9 @@ function mexerBola() {
     
     var decorrido = agora - anterior;      
 
-    context4.clearRect(0, 0, animacao.width, animacao.height);
+    context4.clearRect(0, 0, canvas4.width, canvas4.height);
     context4.fillStyle = "lightblue";
-    context4.fillRect(0,0,animacao.height, animacao.width);
+    context4.fillRect(0,0,canvas4.height, canvas4.width);
     context4.fillStyle = "red";
     
     context4.beginPath();
