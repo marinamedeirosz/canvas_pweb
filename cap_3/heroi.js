@@ -34,7 +34,7 @@ Heroi.prototype = {
         var tiro = new Bola(this.context);
         tiro.x = this.x + 10;
         tiro.y = this.y + 10;
-        tiro.raio = 2;
+        tiro.raio = 4;
         tiro.cor ='red';
 
         if (this.direcao == DIRECAO_ESQUERDA){

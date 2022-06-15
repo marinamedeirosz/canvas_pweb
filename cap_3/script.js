@@ -1,5 +1,6 @@
 var canvas = document.getElementById("canvas_teclado_1");
 var context = canvas.getContext('2d');
+context.fillStyle = "lightblue";
 
 /*var posicao = 0;
 desenharPersonagem();
