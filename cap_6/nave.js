@@ -27,5 +27,20 @@ Nave.prototype = {
     atirar: function(){
         var t = new Tiro(this.context, this);
         this.animacao.novoSprite(t);
+        this.colisor.novoSprite(t);
+    },
+    retangulosColisao: function(){
+        var rets = [
+            {x: this.x + 2, y: this.y + 19, largura: 9, altura: 13},
+            {x: this.x + 13, y: this.y + 3, largura: 10, altura: 33},
+            {x: this.x + 25, y: this.y + 19, largura: 9, altura: 13}
+        ];
+        return rets;
+    },
+    colidiuCom: function(outro){
+        if (outro instanceof Ovni){
+            this.animacao.desligar();
+            alert("Game Over");
+        }
     }
 }
